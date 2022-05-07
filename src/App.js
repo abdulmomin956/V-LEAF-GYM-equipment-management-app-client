@@ -9,6 +9,7 @@ import NavBar from './shared/NavBar/NavBar';
 import NotFound from './pages/NotFound/NotFound';
 import RequireAuth from './shared/RequireAuth/RequireAuth';
 import EmailVerified from './pages/EmailVerified/EmailVerified';
+import Blogs from './pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <MyItems></MyItems>
           </RequireAuth>
         }></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/verify' element={<EmailVerified></EmailVerified>}></Route>

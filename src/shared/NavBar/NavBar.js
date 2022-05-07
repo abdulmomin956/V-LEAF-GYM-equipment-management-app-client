@@ -34,9 +34,10 @@ const NavBar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
+                            <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                             {
                                 user ?
-                                    <button onClick={handleSignOut}>Log out</button>
+                                    <button style={{ backgroundColor: 'transparent', color: 'white', border: '0' }} onClick={handleSignOut}>Log out</button>
                                     :
                                     <>
                                         <Nav.Link as={Link} to="/login">Login</Nav.Link>
