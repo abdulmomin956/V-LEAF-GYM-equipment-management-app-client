@@ -20,7 +20,7 @@ const Home = () => {
                 <h1 className='text-center'>EQUIPMENT</h1>
                 <div className='short-items mx-auto'>
                     {
-                        products.map(product => <Product key={product._id} product={product}></Product>)
+                        products.slice(0, 6).map(product => <Product key={product._id} product={product}></Product>)
                     }
                 </div>
             </section>
