@@ -4,10 +4,13 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import MyItems from './pages/MyItems/MyItems';
 import Register from './pages/Register/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './shared/NavBar/NavBar';
 
 function App() {
   return (
     <div>
+      <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/my-items' element={<MyItems></MyItems>}></Route>
