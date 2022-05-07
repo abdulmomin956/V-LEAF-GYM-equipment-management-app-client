@@ -1,8 +1,17 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const NavBar = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+    const handleSignOut = () => {
+        signOut(auth);
+    }
+    console.log(user);
     return (
         <div>
             <Navbar expand="lg" variant='dark' style={{ backgroundColor: '#a1539c', color: 'light' }} className=''>
@@ -16,15 +25,24 @@ const NavBar = () => {
                             navbarScroll
                         >
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/my-items">My Items</Nav.Link>
+                            {
+                                user && <Nav.Link as={Link} to="/my-items">My Items</Nav.Link>
+                            }
                         </Nav>
                         <Nav
                             className="ms-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                            <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            {
+                                user ?
+                                    <button onClick={handleSignOut}>Log out</button>
+                                    :
+                                    <>
+                                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                                    </>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

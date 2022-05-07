@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -12,18 +13,24 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    const [updateProfile, updating, error1] = useUpdateProfile(auth);
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    // let from = location.state?.from?.pathname || "/";
+
 
     const nameRef = useRef()
     const emailRef = useRef()
     const passRef = useRef()
-    const handleOnSubmit = e => {
+    const handleOnSubmit = async e => {
         e.preventDefault();
-        const name = nameRef.current.value;
+        const displayName = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passRef.current.value;
-        console.log(name, email, password);
-        createUserWithEmailAndPassword(email, password);
-
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName });
+        navigate('/verify')
     }
     return (
         <div>
