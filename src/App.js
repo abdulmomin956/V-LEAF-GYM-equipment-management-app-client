@@ -6,6 +6,7 @@ import MyItems from './pages/MyItems/MyItems';
 import Register from './pages/Register/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './shared/NavBar/NavBar';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/my-items' element={<MyItems></MyItems>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );
