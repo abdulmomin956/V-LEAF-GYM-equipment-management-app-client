@@ -7,7 +7,7 @@ const NavBar = () => {
         <div>
             <Navbar expand="lg" variant='dark' style={{ backgroundColor: '#a1539c', color: 'light' }} className=''>
                 <Container fluid>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">Navbar scroll</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
