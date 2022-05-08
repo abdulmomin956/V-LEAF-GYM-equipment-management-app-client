@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 const Item = ({ product }) => {
     const { name, image, short, price, qty, suppName } = product;
+
     return (
 
         <tr>
@@ -9,7 +11,7 @@ const Item = ({ product }) => {
             <td>{name}</td>
             <td>{price} Taka</td>
             <td>{qty} pcs</td>
-            <td>{suppName}<button style={{ backgroundColor: 'red', color: 'white', position: 'fixed' }}>delete</button></td>
+            <td className='position-relative'><p>{suppName}</p><Button className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '10px', top: '20px' }}>delete</Button></td>
         </tr>
 
 
