@@ -1,0 +1,8 @@
+.item-table tr th {
+    text-align: end;
+}
+
+.item-table tr td {
+    text-align: start;
+    padding: .5rem 1rem;
+}
