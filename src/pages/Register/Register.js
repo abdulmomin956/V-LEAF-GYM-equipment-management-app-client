@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import gIcon from '../../images/google.jpg'
 
 const Register = () => {
 
@@ -54,6 +55,11 @@ const Register = () => {
                         Register
                     </Button>
                 </Form>
+                <p className='my-3'>Already have an account?<Link className='text-myViolet ms-2' to='/login'>Log in</Link></p>
+                <div className='d-flex w-100 justify-content-between my-3' ><div style={{ height: '1px', backgroundColor: 'gray', width: '48%' }}></div><div className='text-center' style={{ width: '2rem', position: 'relative', bottom: '10px' }}>Or</div><div style={{ height: '1px', backgroundColor: 'gray', width: '48%' }}></div>
+                </div>
+                <div><Button className='d-block mx-auto rounded-0 py-0 ps-0'><img style={{ width: '35px' }} src={gIcon} alt="" /> Sign in with Google</Button>
+                </div>
             </div>
         </div>
     );
