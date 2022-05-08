@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound/NotFound';
 import RequireAuth from './shared/RequireAuth/RequireAuth';
 import EmailVerified from './pages/EmailVerified/EmailVerified';
 import Blogs from './pages/Blogs/Blogs';
+import Inventory from './pages/Inventory/Inventory';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
         <Route path='/verify' element={<EmailVerified></EmailVerified>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import banner from '../../images/vbanner.png'
+import useInventory from '../../shared/CustomHook/useInventory';
 import Product from '../Product/Product';
 import './Home.css'
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:5000/products")
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+    const [products, setProducts] = useInventory();
+
     return (
         <div>
             <section className='w-100 text-white d-flex flex-column justify-content-center align-items-center' style={{ backgroundImage: `url(${banner})`, backgroundPosition: 'center center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '70vh' }}>
@@ -23,6 +22,7 @@ const Home = () => {
                         products.slice(0, 6).map(product => <Product key={product._id} product={product}></Product>)
                     }
                 </div>
+                <Link className='text-myViolet' to='/inventory'><Button className='bg-myViolet text-white shadow-none d-block mx-auto mt-3'>Manage Inventory</Button></Link>
             </section>
         </div>
     );

@@ -11,7 +11,6 @@ const NavBar = () => {
     const handleSignOut = () => {
         signOut(auth);
     }
-    console.log(user);
     return (
         <div>
             <Navbar expand="lg" variant='dark' style={{ backgroundColor: '#a1539c', color: 'light' }} className=''>
