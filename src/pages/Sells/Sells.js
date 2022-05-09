@@ -5,7 +5,6 @@ import './Sells.css'
 const Sells = ({ products }) => {
     const hasSold = products.filter(p => p.sold !== undefined);
     const remaining = hasSold.filter(p => p.sold !== 0);
-    // console.log(remaining);
     const myWidt = window.innerWidth;
     const [myWidth, setMyWidth] = useState(myWidt)
     window.onresize = () => {

@@ -23,7 +23,7 @@ const Inventory = () => {
     const imageRef = useRef('')
 
     const handleDelete = id => {
-        fetch('http://localhost:5000/delete/' + id, {
+        fetch('https://fathomless-bastion-42957.herokuapp.com/delete/' + id, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const Inventory = () => {
             })
     }
 
-    // const location = useLocation()
+
 
 
 
@@ -50,7 +50,7 @@ const Inventory = () => {
 
 
 
-        fetch('http://localhost:5000/product/', {
+        fetch('https://fathomless-bastion-42957.herokuapp.com/product/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -62,14 +62,13 @@ const Inventory = () => {
                 data._id = result.insertedId;
                 products.push(data)
                 navigate('/inventory')
-                // console.log(result.insertedId);
             })
 
         e.target.reset()
 
         const fetchUser = () => {
             data.uid = user.uid;
-            fetch('http://localhost:5000/user/', {
+            fetch('https://fathomless-bastion-42957.herokuapp.com/user/', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

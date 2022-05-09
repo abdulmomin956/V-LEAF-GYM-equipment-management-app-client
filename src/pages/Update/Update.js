@@ -13,7 +13,7 @@ const Update = () => {
 
     useEffect(() => {
         const getData = () => {
-            const url = `http://localhost:5000/product/${id}`
+            const url = `https://fathomless-bastion-42957.herokuapp.com/product/${id}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => setProduct(data))
@@ -29,7 +29,7 @@ const Update = () => {
         e.preventDefault()
         const newQty = parseInt(qtyRef.current.value) + qty;
         product.qty = newQty;
-        await fetch(`http://localhost:5000/product/${_id}`, {
+        await fetch(`https://fathomless-bastion-42957.herokuapp.com/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Update = () => {
         }
 
         product.sold = newSold;
-        await fetch(`http://localhost:5000/product/${id}`, {
+        await fetch(`https://fathomless-bastion-42957.herokuapp.com/product/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -93,7 +93,7 @@ const Update = () => {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={() => handleDeliver(_id)}>Delivered</button>
+            <button className='my-4' onClick={() => handleDeliver(_id)}>Delivered</button>
             <form onSubmit={handleOnAdd}>
                 <input ref={qtyRef} type="number" min="1" placeholder='QTY' /><button>Restock</button>
             </form>

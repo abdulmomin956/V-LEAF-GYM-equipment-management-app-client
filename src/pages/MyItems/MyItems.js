@@ -9,12 +9,10 @@ const MyItems = () => {
 
     const [products, setItems] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user.uid}`)
+        fetch(`https://fathomless-bastion-42957.herokuapp.com/user/${user.uid}`)
             .then(res => res.json())
             .then(data => setItems(data))
     }, [user.uid])
-    // console.log(user);
-    // console.log(user.providerData[0].providerId);
     return (
         <div style={{ minHeight: '90vh' }}>
             {

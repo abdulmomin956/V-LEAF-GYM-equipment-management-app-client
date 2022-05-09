@@ -16,7 +16,6 @@ const SocialLogin = ({ props }) => {
     const handleGoogleSignIn = async () => {
         await signInWithGoogle();
         if (auth?.currentUser) {
-            // console.log(auth?.currentUser);
             navigate(from, { replace: true });
 
         }
