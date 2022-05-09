@@ -1,0 +1,5 @@
+.simple-table>thead th,
+.simple-table td {
+    border: 1px solid gray;
+    padding: 5px 10px;
+}

@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import gIcon from '../../images/google.jpg'
+import SocialLogin from '../../shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [
@@ -34,6 +34,8 @@ const Login = () => {
         }
     }
 
+    // google button
+    const gButton = { text: 'Sign in' };
 
 
     return (
@@ -57,10 +59,7 @@ const Login = () => {
                     </Button>
                 </Form>
                 <p className='my-3'>Don't have an account?<Link className='text-myViolet ms-2' to='/register'>Create an account</Link></p>
-                <div className='d-flex w-100 justify-content-between my-3' ><div style={{ height: '1px', backgroundColor: 'gray', width: '48%' }}></div><div className='text-center' style={{ width: '2rem', position: 'relative', bottom: '10px' }}>Or</div><div style={{ height: '1px', backgroundColor: 'gray', width: '48%' }}></div>
-                </div>
-                <div><Button className='d-block mx-auto rounded-0 py-0 ps-0'><img style={{ width: '35px' }} src={gIcon} alt="" /> Sign in with Google</Button>
-                </div>
+                <SocialLogin props={gButton}></SocialLogin>
 
             </div>
         </div>
