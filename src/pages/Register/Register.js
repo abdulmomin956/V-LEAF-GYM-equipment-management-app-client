@@ -38,7 +38,7 @@ const Register = () => {
     const gButton = { text: 'Continue' };
 
     return (
-        <div>
+        <div style={{ minHeight: '80vh', marginTop: '10vh' }}>
             <h1 className='text-center'>Please Register</h1>
             <div className='w-50 mx-auto'>
                 <Form onSubmit={handleOnSubmit}>

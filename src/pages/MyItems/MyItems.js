@@ -23,7 +23,7 @@ const MyItems = () => {
 
 
     return (
-        <div>
+        <div style={{ minHeight: '90vh' }}>
             {
                 !user.emailVerified ?
                     <EmailVerified></EmailVerified> :

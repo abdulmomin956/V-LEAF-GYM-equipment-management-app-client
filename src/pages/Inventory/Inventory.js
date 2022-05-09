@@ -63,7 +63,7 @@ const Inventory = () => {
     }
 
     return (
-        <div>
+        <div style={{ minHeight: '90vh' }}>
             <h1 className='text-center'>Manage Inventory ({products.length})</h1>
 
             <div className='w-50 mx-auto'>

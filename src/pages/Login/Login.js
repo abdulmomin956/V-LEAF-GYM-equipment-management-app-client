@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from '../../shared/SocialLogin/SocialLogin';
@@ -34,12 +34,27 @@ const Login = () => {
         }
     }
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+    );
+
+    const handleResetPass = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            navigate('/passreset')
+        }
+        else {
+            alert('Please enter your email address')
+        }
+    }
+
     // google button
     const gButton = { text: 'Sign in' };
 
 
     return (
-        <div>
+        <div style={{ minHeight: '80vh', marginTop: '10vh' }}>
             <h1 className='text-center'>Please Login</h1>
             <div className='w-50 mx-auto'>
                 <Form onSubmit={handleOnSubmit}>
@@ -58,6 +73,7 @@ const Login = () => {
                             'Login'}
                     </Button>
                 </Form>
+                <p onClick={handleResetPass} className='text-myViolet border-0 my-3' style={{ cursor: 'pointer' }}>Forgotten password?</p>
                 <p className='my-3'>Don't have an account?<Link className='text-myViolet ms-2' to='/register'>Create an account</Link></p>
                 <SocialLogin props={gButton}></SocialLogin>
 

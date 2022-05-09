@@ -12,6 +12,8 @@ import EmailVerified from './pages/EmailVerified/EmailVerified';
 import Blogs from './pages/Blogs/Blogs';
 import Inventory from './pages/Inventory/Inventory';
 import Update from './pages/Update/Update';
+import PassReset from './pages/PassReset/PassReset';
+import Footer from './shared/Footer/Footer';
 
 function App() {
   return (
@@ -34,8 +36,10 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/verify' element={<EmailVerified></EmailVerified>}></Route>
+        <Route path='/passreset' element={<PassReset></PassReset>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

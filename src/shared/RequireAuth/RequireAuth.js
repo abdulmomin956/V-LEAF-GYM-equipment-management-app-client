@@ -9,7 +9,7 @@ function RequireAuth({ children }) {
 
     if (loading) {
         return (
-            <div>
+            <div style={{ minHeight: '80vh', marginTop: '10vh' }}>
                 <h1 className='text-center'>Loading...</h1>
             </div>
         )

@@ -64,7 +64,7 @@ const Update = () => {
     }
 
     return (
-        <div className='text-center'>
+        <div style={{ minHeight: '90vh' }} className='text-center my-3'>
             <h1>{_id}</h1>
             <img className='d-block w-25 mx-auto' src={image} alt="" />
             <h3>{name}</h3>
