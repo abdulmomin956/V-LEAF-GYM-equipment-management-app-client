@@ -12,9 +12,9 @@ const Update = () => {
 
 
     useEffect(() => {
-        const getData = async () => {
+        const getData = () => {
             const url = `http://localhost:5000/product/${id}`
-            await fetch(url)
+            fetch(url)
                 .then(res => res.json())
                 .then(data => setProduct(data))
         }

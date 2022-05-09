@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import banner from '../../images/vbanner.png'
 import useInventory from '../../shared/CustomHook/useInventory';
 import Product from '../Product/Product';
+import Sells from '../Sells/Sells';
 import TopProducts from '../TopProducts/TopProducts';
 import './Home.css'
 
@@ -26,6 +27,7 @@ const Home = () => {
                 <Link className='text-myViolet' to='/inventory'><Button className='bg-myViolet text-white shadow-none d-block mx-auto mt-3'>Manage Inventory</Button></Link>
             </section>
             <TopProducts products={products}></TopProducts>
+            <Sells products={products}></Sells>
         </div>
     );
 };

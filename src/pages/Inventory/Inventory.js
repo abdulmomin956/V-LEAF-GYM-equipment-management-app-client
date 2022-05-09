@@ -32,6 +32,8 @@ const Inventory = () => {
 
     // const location = useLocation()
 
+
+
     const handleOnSubmit = e => {
         e.preventDefault();
         const name = nameRef.current.value;
@@ -60,6 +62,10 @@ const Inventory = () => {
             })
 
         e.target.reset()
+    }
+
+    const handleUpdate = id => {
+        navigate(`/inventory/${id}`)
     }
 
     return (
@@ -92,9 +98,10 @@ const Inventory = () => {
                 <thead>
                     <tr>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th style={{ width: '15%' }}>Name</th>
                         <th>Price(BDT)</th>
                         <th>QTY</th>
+                        <th>Sold</th>
                         <th>Supplier</th>
                     </tr>
                 </thead>
@@ -105,7 +112,14 @@ const Inventory = () => {
                             <td>{product.name}</td>
                             <td>{product.price} Taka</td>
                             <td>{product.qty} pcs</td>
-                            <td className='position-relative'><p>{product.suppName}</p><Button onClick={() => handleDelete(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '10px', top: '20px' }}>delete</Button></td>
+                            <td>{product?.sold} pcs</td>
+                            <td className='position-relative'><p>{product.suppName}</p>
+                                <Button onClick={() => handleUpdate(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '90px', top: '20px' }}>
+                                    Update
+                                </Button>
+                                <Button onClick={() => handleDelete(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '10px', top: '20px' }}>
+                                    delete
+                                </Button></td>
                         </tr>)
                     }
                 </tbody>
