@@ -62,13 +62,13 @@ const Inventory = () => {
                 data._id = result.insertedId;
                 products.push(data)
                 navigate('/inventory')
-                console.log(result.insertedId);
+                // console.log(result.insertedId);
             })
 
         e.target.reset()
 
         const fetchUser = () => {
-            data.email = user.email;
+            data.uid = user.uid;
             fetch('http://localhost:5000/user/', {
                 method: 'POST',
                 headers: {

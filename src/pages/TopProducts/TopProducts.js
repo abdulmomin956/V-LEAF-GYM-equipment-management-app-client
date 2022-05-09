@@ -1,11 +1,12 @@
 import React from 'react';
+import './TopProduct.css'
 
 const TopProducts = ({ products }) => {
     products.sort((a, b) => parseFloat(b.qty) - parseFloat(a.qty));
     return (
         <div className='mx-auto' style={{ width: '80%' }}>
             <h1 className='mb-3'>Top Products</h1>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '5rem' }}>
+            <div className='top-product' >
                 {
                     products.slice(0, 3).map(product =>
                         <div style={{ border: '1px solid gray', padding: '3rem', borderRadius: '10px' }} key={product._id}>

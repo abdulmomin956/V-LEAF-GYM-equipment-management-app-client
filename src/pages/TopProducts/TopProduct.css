@@ -1,0 +1,10 @@
+.top-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.top-product div {
+    margin-top: 2rem;
+    max-width: 400px;
+}

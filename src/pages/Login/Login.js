@@ -72,6 +72,7 @@ const Login = () => {
                             'Loading' :
                             'Login'}
                     </Button>
+                    {error && <p className='text-danger pe-auto'>{error.message}</p>}
                 </Form>
                 <p onClick={handleResetPass} className='text-myViolet border-0 my-3' style={{ cursor: 'pointer' }}>Forgotten password?</p>
                 <p className='my-3'>Don't have an account?<Link className='text-myViolet ms-2' to='/register'>Create an account</Link></p>

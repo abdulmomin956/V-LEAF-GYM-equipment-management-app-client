@@ -58,6 +58,7 @@ const Register = () => {
                     <Button className='bg-myViolet text-white shadow-none' type="submit">
                         Register
                     </Button>
+                    {error && <p className='text-danger pe-auto'>{error.message}</p>}
                 </Form>
                 <p className='my-3'>Already have an account?<Link className='text-myViolet ms-2' to='/login'>Log in</Link></p>
                 <SocialLogin props={gButton}></SocialLogin>

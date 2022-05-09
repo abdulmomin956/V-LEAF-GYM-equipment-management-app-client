@@ -16,7 +16,7 @@ const SocialLogin = ({ props }) => {
     const handleGoogleSignIn = async () => {
         await signInWithGoogle();
         if (auth?.currentUser) {
-            console.log(auth?.currentUser);
+            // console.log(auth?.currentUser);
             navigate(from, { replace: true });
 
         }
@@ -30,6 +30,7 @@ const SocialLogin = ({ props }) => {
                 'Loading' :
                 `${props.text} with Google`} </Button>
             </div>
+            {error && <p className='text-danger pe-auto'>{error.message}</p>}
         </div>
     );
 };

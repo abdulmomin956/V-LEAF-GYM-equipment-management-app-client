@@ -4,3 +4,17 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
 }
+
+@media only screen and (min-width:992px) and (max-width:1440px) {
+    .short-items {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .short-items {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+}
