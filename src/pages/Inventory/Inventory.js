@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Collapse, Fade } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import useInventory from '../../shared/CustomHook/useInventory';
 import './Inventory.css'
 
 const Inventory = () => {
     const [products, setProducts] = useInventory();
     const [open, setOpen] = useState(false);
+
+    const [user, loading, error] = useAuthState(auth);
 
     const navigate = useNavigate()
 
@@ -62,6 +66,22 @@ const Inventory = () => {
             })
 
         e.target.reset()
+
+        const fetchUser = () => {
+            data.email = user.email;
+            fetch('http://localhost:5000/user/', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result.insertedId);
+                })
+        }
+        fetchUser();
     }
 
     const handleUpdate = id => {
