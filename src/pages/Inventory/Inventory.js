@@ -9,6 +9,7 @@ import './Inventory.css'
 const Inventory = () => {
     const [products, setProducts] = useInventory();
     const [open, setOpen] = useState(false);
+    const [allcat, setAllCat] = useState([])
 
     const [user, loading, error] = useAuthState(auth);
 
@@ -16,14 +17,25 @@ const Inventory = () => {
 
     // form item
     const nameRef = useRef('')
+    const catRef = useRef('')
     const shortRef = useRef('')
     const priceRef = useRef(0)
     const qtyRef = useRef(0)
     const suppRef = useRef('')
     const imageRef = useRef('')
 
+    useEffect(() => {
+        fetch('https://v-leaf-server.onrender.com/categories')
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                setAllCat(result)
+
+            })
+    }, [])
+
     const handleDelete = id => {
-        fetch('https://fathomless-bastion-42957.herokuapp.com/delete/' + id, {
+        fetch('https://v-leaf-server.onrender.com/delete/' + id, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -41,16 +53,18 @@ const Inventory = () => {
     const handleOnSubmit = e => {
         e.preventDefault();
         const name = nameRef.current.value;
+        const category = catRef.current.value;
         const short = shortRef.current.value;
         const price = priceRef.current.value;
         const qty = qtyRef.current.value;
         const supp = suppRef.current.value;
         const image = imageRef.current.value;
-        const data = { name: name, short: short, price: price, qty: qty, suppName: supp, image: image, sold: 0 };
+        const data = { name, category, short, price, qty, suppName: supp, image, sold: 0 };
 
+        // console.log(data);
+        // return
 
-
-        fetch('https://fathomless-bastion-42957.herokuapp.com/product/', {
+        fetch('https://v-leaf-server.onrender.com/product/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -68,7 +82,7 @@ const Inventory = () => {
 
         const fetchUser = () => {
             data.uid = user.uid;
-            fetch('https://fathomless-bastion-42957.herokuapp.com/user/', {
+            fetch('https://v-leaf-server.onrender.com/user/', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -90,29 +104,40 @@ const Inventory = () => {
     return (
         <div style={{ minHeight: '90vh' }}>
             <h1 className='text-center'>Manage Inventory ({products.length})</h1>
-
-            <div className='w-50 mx-auto'>
-                <Button
-                    onClick={() => setOpen(!open)}
-                    aria-expanded={open}
-                    aria-controls="fadeID" className='bg-myViolet text-white shadow-none rounded-0 d-block px-4 py-2'>Add A Item</Button>
-            </div>
-            <Collapse in={open}><div id="fadeID" className='mx-auto'
-                style={{
-                    width: '50%',
-                    textAlign: 'justify'
-                }}>
-                <form className='add-form' onSubmit={handleOnSubmit}>
-                    <input ref={nameRef} type="text" placeholder='name' required />
-                    <input ref={shortRef} type="text" placeholder='short description' />
-                    <input ref={priceRef} type="number" min='1' placeholder='price' required />
-                    <input ref={qtyRef} type="number" min='1' placeholder='quatity' required />
-                    <input ref={suppRef} type="text" placeholder='supplier name' />
-                    <input ref={imageRef} type="text" placeholder='image url' />
-                    <button className='shadow-none' style={{ padding: '10px 15px', backgroundColor: 'green', color: 'white', border: '0' }}>Add</button>
-                </form>
-            </div></Collapse>
-
+            {user &&
+                <>
+                    <div className='w-50 mx-auto'>
+                        <Button
+                            onClick={() => setOpen(!open)}
+                            aria-expanded={open}
+                            aria-controls="fadeID" className='bg-myViolet text-white shadow-none rounded-0 d-block px-4 py-2'>
+                            Add A Item
+                        </Button>
+                    </div>
+                    <Collapse in={open}><div id="fadeID" className='mx-auto'
+                        style={{
+                            width: '50%',
+                            textAlign: 'justify'
+                        }}>
+                        <form className='add-form' onSubmit={handleOnSubmit}>
+                            <input ref={nameRef} type="text" placeholder='name' required />
+                            <select ref={catRef} defaultValue="" type="text" placeholder='select a category' required >
+                                <option disabled value="">select a category</option>
+                                {
+                                    allcat.map(c => <option key={c._id} value={c._id}>{c.title}</option>)
+                                }
+                            </select>
+                            <input ref={shortRef} type="text" placeholder='short description' />
+                            <input ref={priceRef} type="number" min='1' placeholder='price' required />
+                            <input ref={qtyRef} type="number" min='1' placeholder='quatity' required />
+                            <input ref={suppRef} type="text" placeholder='supplier name' />
+                            <input ref={imageRef} type="text" placeholder='image url' />
+                            <button className='shadow-none' style={{ padding: '10px 15px', backgroundColor: 'green', color: 'white', border: '0' }}>Add</button>
+                        </form>
+                    </div>
+                    </Collapse>
+                </>
+            }
             <table className='mx-auto styled-table'>
                 <thead>
                     <tr>
@@ -136,9 +161,12 @@ const Inventory = () => {
                                 <Button onClick={() => handleUpdate(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '90px', top: '20px' }}>
                                     Update
                                 </Button>
-                                <Button onClick={() => handleDelete(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '10px', top: '20px' }}>
-                                    delete
-                                </Button></td>
+                                {
+                                    user && <Button onClick={() => handleDelete(product._id)} className='bg-myViolet text-white shadow-none d-block mx-auto' style={{ position: 'absolute', right: '10px', top: '20px' }}>
+                                        delete
+                                    </Button>
+                                }
+                            </td>
                         </tr>)
                     }
                 </tbody>

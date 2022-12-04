@@ -13,7 +13,7 @@ const Update = () => {
 
     useEffect(() => {
         const getData = () => {
-            const url = `https://fathomless-bastion-42957.herokuapp.com/product/${id}`
+            const url = `https://v-leaf-server.onrender.com/product/${id}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => setProduct(data))
@@ -29,7 +29,7 @@ const Update = () => {
         e.preventDefault()
         const newQty = parseInt(qtyRef.current.value) + qty;
         product.qty = newQty;
-        await fetch(`https://fathomless-bastion-42957.herokuapp.com/product/${_id}`, {
+        await fetch(`https://v-leaf-server.onrender.com/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Update = () => {
         }
 
         product.sold = newSold;
-        await fetch(`https://fathomless-bastion-42957.herokuapp.com/product/${id}`, {
+        await fetch(`https://v-leaf-server.onrender.com/product/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

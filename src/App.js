@@ -14,6 +14,8 @@ import Inventory from './pages/Inventory/Inventory';
 import Update from './pages/Update/Update';
 import PassReset from './pages/PassReset/PassReset';
 import Footer from './shared/Footer/Footer';
+import Profile from './pages/Profile/Profile';
+import Category from './pages/category/Category';
 
 function App() {
   return (
@@ -29,10 +31,20 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
+        <Route path='/inventory' element={<Inventory />}></Route>
+        <Route path='/category' element={
+          <RequireAuth>
+            <Category />
+          </RequireAuth>
+        }></Route>
         <Route path='/inventory/:id' element={
           <RequireAuth>
             <Update />
+          </RequireAuth>
+        }></Route>
+        <Route path='/profile' element={
+          <RequireAuth>
+            <Profile />
           </RequireAuth>
         }></Route>
         <Route path='/verify' element={<EmailVerified></EmailVerified>}></Route>

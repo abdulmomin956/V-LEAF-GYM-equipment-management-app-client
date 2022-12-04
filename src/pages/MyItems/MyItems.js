@@ -9,7 +9,7 @@ const MyItems = () => {
 
     const [products, setItems] = useState([])
     useEffect(() => {
-        fetch(`https://fathomless-bastion-42957.herokuapp.com/user/${user.uid}`)
+        fetch(`https://v-leaf-server.onrender.com/user/${user.uid}`)
             .then(res => res.json())
             .then(data => setItems(data))
     }, [user.uid])
