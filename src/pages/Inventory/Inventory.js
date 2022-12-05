@@ -25,7 +25,7 @@ const Inventory = () => {
     const imageRef = useRef('')
 
     useEffect(() => {
-        fetch('https://vleaf-server.vercel.app/categories')
+        fetch('https://http-nodejs-production-ab47.up.railway.app/categories')
             .then(res => res.json())
             .then(result => {
                 console.log(result);
@@ -35,7 +35,7 @@ const Inventory = () => {
     }, [])
 
     const handleDelete = id => {
-        fetch('https://vleaf-server.vercel.app/delete/' + id, {
+        fetch('https://http-nodejs-production-ab47.up.railway.app/delete/' + id, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -64,7 +64,7 @@ const Inventory = () => {
         // console.log(data);
         // return
 
-        fetch('https://vleaf-server.vercel.app/product/', {
+        fetch('https://http-nodejs-production-ab47.up.railway.app/product/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -82,7 +82,7 @@ const Inventory = () => {
 
         const fetchUser = () => {
             data.uid = user.uid;
-            fetch('https://vleaf-server.vercel.app/user/', {
+            fetch('https://http-nodejs-production-ab47.up.railway.app/user/', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

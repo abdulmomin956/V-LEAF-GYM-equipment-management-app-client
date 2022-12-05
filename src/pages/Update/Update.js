@@ -13,7 +13,7 @@ const Update = () => {
 
     useEffect(() => {
         const getData = () => {
-            const url = `https://vleaf-server.vercel.app/product/${id}`
+            const url = `https://http-nodejs-production-ab47.up.railway.app/product/${id}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => setProduct(data))
@@ -29,7 +29,7 @@ const Update = () => {
         e.preventDefault()
         const newQty = parseInt(qtyRef.current.value) + qty;
         product.qty = newQty;
-        await fetch(`https://vleaf-server.vercel.app/product/${_id}`, {
+        await fetch(`https://http-nodejs-production-ab47.up.railway.app/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Update = () => {
         }
 
         product.sold = newSold;
-        await fetch(`https://vleaf-server.vercel.app/product/${id}`, {
+        await fetch(`https://http-nodejs-production-ab47.up.railway.app/product/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

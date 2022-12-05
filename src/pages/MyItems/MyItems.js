@@ -9,7 +9,7 @@ const MyItems = () => {
 
     const [products, setItems] = useState([])
     useEffect(() => {
-        fetch(`https://vleaf-server.vercel.app/user/${user.uid}`)
+        fetch(`https://http-nodejs-production-ab47.up.railway.app/user/${user.uid}`)
             .then(res => res.json())
             .then(data => setItems(data))
     }, [user.uid])

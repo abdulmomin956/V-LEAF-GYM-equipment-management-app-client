@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useInventory = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch("https://vleaf-server.vercel.app/products")
+        fetch("https://http-nodejs-production-ab47.up.railway.app/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
