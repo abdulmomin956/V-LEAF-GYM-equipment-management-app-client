@@ -14,7 +14,7 @@ const Category = () => {
         e.preventDefault()
         const newCat = { title: nameRef.current.value }
         console.log(newCat);
-        fetch('https://v-leaf-server.onrender.com/category', {
+        fetch('https://vleaf-server.vercel.app/category', {
             method: 'POST',
             headers: {
                 'content-type': "application/json"
@@ -36,7 +36,7 @@ const Category = () => {
     useEffect(() => {
         if (load) {
             setLoad(false)
-            fetch('https://v-leaf-server.onrender.com/categories')
+            fetch('https://vleaf-server.vercel.app/categories')
                 .then(res => res.json())
                 .then(result => {
                     console.log(result);
@@ -51,7 +51,7 @@ const Category = () => {
 
     const handleUpdate = (id) => {
         const body = { title: newTitle }
-        fetch(`https://v-leaf-server.onrender.com/category/${id}`, {
+        fetch(`https://vleaf-server.vercel.app/category/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

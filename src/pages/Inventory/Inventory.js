@@ -25,7 +25,7 @@ const Inventory = () => {
     const imageRef = useRef('')
 
     useEffect(() => {
-        fetch('https://v-leaf-server.onrender.com/categories')
+        fetch('https://vleaf-server.vercel.app/categories')
             .then(res => res.json())
             .then(result => {
                 console.log(result);
@@ -35,7 +35,7 @@ const Inventory = () => {
     }, [])
 
     const handleDelete = id => {
-        fetch('https://v-leaf-server.onrender.com/delete/' + id, {
+        fetch('https://vleaf-server.vercel.app/delete/' + id, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -64,7 +64,7 @@ const Inventory = () => {
         // console.log(data);
         // return
 
-        fetch('https://v-leaf-server.onrender.com/product/', {
+        fetch('https://vleaf-server.vercel.app/product/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -82,7 +82,7 @@ const Inventory = () => {
 
         const fetchUser = () => {
             data.uid = user.uid;
-            fetch('https://v-leaf-server.onrender.com/user/', {
+            fetch('https://vleaf-server.vercel.app/user/', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
