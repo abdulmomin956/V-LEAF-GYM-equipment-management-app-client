@@ -11,10 +11,12 @@ const Product = ({ product }) => {
     }
     return (
         <Card style={{ border: '1px solid gray', padding: '2rem' }}>
-            <img src={image} className='mx-auto' style={{ width: '80%', display: 'block' }} alt="" />
-            <Card.Body>
-                <h3>{name}</h3><hr />
-                <p>{short}</p><hr />
+            <Card.Header className='bg-white mh-100'>
+                <img src={image} className='mx-auto' style={{ width: '80%', display: 'block' }} alt="" />
+            </Card.Header>
+            <Card.Body className='d-flex flex-column justify-content-end'>
+                <h3 style={{ height: '4rem', textOverflow: `ellipsis ellipsis`, overflow: 'hidden' }}>{name}</h3><hr />
+                <p>{short.substring(0, 120) + "..."}</p><hr />
                 <p>Rate: <span style={{ color: 'green', fontWeight: 'bold' }}>{price} Taka</span></p><hr />
                 <p>Supplier: {suppName}</p><hr />
                 <p><b>QTY: {qty}</b></p>
