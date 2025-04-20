@@ -14,7 +14,7 @@ const Category = () => {
         e.preventDefault()
         const newCat = { title: nameRef.current.value }
         console.log(newCat);
-        fetch('https://http-nodejs-production-ab47.up.railway.app/category', {
+        fetch('https://v-leaf-server.onrender.com/category', {
             method: 'POST',
             headers: {
                 'content-type': "application/json"
@@ -36,7 +36,7 @@ const Category = () => {
     useEffect(() => {
         if (load) {
             setLoad(false)
-            fetch('https://http-nodejs-production-ab47.up.railway.app/categories')
+            fetch('https://v-leaf-server.onrender.com/categories')
                 .then(res => res.json())
                 .then(result => {
                     console.log(result);
@@ -51,7 +51,7 @@ const Category = () => {
 
     const handleUpdate = (id) => {
         const body = { title: newTitle }
-        fetch(`https://http-nodejs-production-ab47.up.railway.app/category/${id}`, {
+        fetch(`https://v-leaf-server.onrender.com/category/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
